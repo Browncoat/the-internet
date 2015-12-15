@@ -1,4 +1,6 @@
 var wifi = require('wifi-cc3000'),
+    http = require( 'http' ),
+    fs = require('fs'),
     tessel = require('tessel'),
     portA = tessel.port['A'],
     outputPin = portA.pin['G1'],
@@ -6,7 +8,9 @@ var wifi = require('wifi-cc3000'),
     pass = '93A9D39DFD34F9D7',
     security = 'wpa2',
     timeouts = 0,
-    quotes = require('./it_crowd_quotes.json');
+    quotes = require('./static/it_crowd_quotes.json');
+
+var html = "<html> <title>The Internet</title> <body> <h1>The Internet</h1> <h3>Generously on loan from The Elders of the Internet</h3> <em>(completely demagnetised By Stephen Hawking himself)</em> <p>It is small. That is one of the surprising things about The Internet.</p> <p>It doesn't have any wires or anything. It's wireless. Much like everything nowadays.</p> <p>It is also very light. Of course, The Internet doesn't weigh anything.</p> <p>It normally goes on top of Big Ben. That's where it gets the best reception.</p> </body> </html>";
 
 var timer;
 
@@ -36,13 +40,21 @@ var responseBlink = function() {
     }, 200);
 }
 
-var http = require( 'http' );
 setTimeout( function() {
     http.createServer( function (req, res) {
         responseBlink();
         var quote = quotes[Math.floor(Math.random() * (quotes.length + 1)) + 0];
         res.writeHead( 200, {'Content-Type': 'text/plain'} );
         res.end(quote);
+    }).listen( 81 );
+}, 10000 );
+
+setTimeout( function() {
+    http.createServer( function (req, res) {
+        responseBlink();
+        res.writeHead(200, {"Content-Type": "text/html"});
+        res.write(html);
+        res.end();
     }).listen( 80 );
 }, 10000 );
 
