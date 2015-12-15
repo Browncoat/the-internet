@@ -1,0 +1,84 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/local/bin/node',
+1 verbose cli   '/usr/local/bin/npm',
+1 verbose cli   'install',
+1 verbose cli   '-add',
+1 verbose cli   'tessel' ]
+2 info using npm@1.4.28
+3 info using node@v0.10.40
+4 warn package.json Internet@1.0.0 No repository field.
+5 warn package.json Internet@1.0.0 No README data
+6 verbose readDependencies using package.json deps
+7 verbose cache add [ 'tessel@1.0.0', null ]
+8 verbose cache add name=undefined spec="tessel@1.0.0" args=["tessel@1.0.0",null]
+9 verbose parsed url { protocol: null,
+9 verbose parsed url   slashes: null,
+9 verbose parsed url   auth: null,
+9 verbose parsed url   host: null,
+9 verbose parsed url   port: null,
+9 verbose parsed url   hostname: null,
+9 verbose parsed url   hash: null,
+9 verbose parsed url   search: null,
+9 verbose parsed url   query: null,
+9 verbose parsed url   pathname: 'tessel@1.0.0',
+9 verbose parsed url   path: 'tessel@1.0.0',
+9 verbose parsed url   href: 'tessel@1.0.0' }
+10 verbose cache add name="tessel" spec="1.0.0" args=["tessel","1.0.0"]
+11 verbose parsed url { protocol: null,
+11 verbose parsed url   slashes: null,
+11 verbose parsed url   auth: null,
+11 verbose parsed url   host: null,
+11 verbose parsed url   port: null,
+11 verbose parsed url   hostname: null,
+11 verbose parsed url   hash: null,
+11 verbose parsed url   search: null,
+11 verbose parsed url   query: null,
+11 verbose parsed url   pathname: '1.0.0',
+11 verbose parsed url   path: '1.0.0',
+11 verbose parsed url   href: '1.0.0' }
+12 verbose addNamed [ 'tessel', '1.0.0' ]
+13 verbose addNamed [ '1.0.0', '1.0.0' ]
+14 silly lockFile 0cfe8518-tessel-1-0-0 tessel@1.0.0
+15 verbose lock tessel@1.0.0 /Users/natepotter/.npm/0cfe8518-tessel-1-0-0.lock
+16 verbose request where is /tessel
+17 verbose request registry https://registry.npmjs.org/
+18 verbose request id eb2cc3ab1fced874
+19 verbose url raw /tessel
+20 verbose url resolving [ 'https://registry.npmjs.org/', './tessel' ]
+21 verbose url resolved https://registry.npmjs.org/tessel
+22 verbose request where is https://registry.npmjs.org/tessel
+23 info trying registry request attempt 1 at 22:37:46
+24 verbose etag "AZ4QJVPKH7I8SVO6OUUVALS51"
+25 http GET https://registry.npmjs.org/tessel
+26 http 200 https://registry.npmjs.org/tessel
+27 silly registry.get cb [ 200,
+27 silly registry.get   { server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+27 silly registry.get     etag: '"40G1IGWG36PZ46KZA42LB85CY"',
+27 silly registry.get     'content-type': 'application/json',
+27 silly registry.get     'cache-control': 'max-age=300',
+27 silly registry.get     'content-length': '46236',
+27 silly registry.get     'accept-ranges': 'bytes',
+27 silly registry.get     date: 'Tue, 15 Dec 2015 06:37:47 GMT',
+27 silly registry.get     via: '1.1 varnish',
+27 silly registry.get     age: '0',
+27 silly registry.get     connection: 'keep-alive',
+27 silly registry.get     'x-served-by': 'cache-lax1432-LAX',
+27 silly registry.get     'x-cache': 'MISS',
+27 silly registry.get     'x-cache-hits': '0',
+27 silly registry.get     'x-timer': 'S1450161467.355576,VS0,VE211',
+27 silly registry.get     vary: 'Accept' } ]
+28 silly lockFile 0cfe8518-tessel-1-0-0 tessel@1.0.0
+29 silly lockFile 0cfe8518-tessel-1-0-0 tessel@1.0.0
+30 error Error: version not found: tessel@1.0.0
+30 error     at /usr/local/lib/node_modules/npm/lib/cache/add-named.js:125:12
+30 error     at saved (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/get.js:167:7)
+30 error     at Object.oncomplete (fs.js:108:15)
+31 error If you need help, you may report this *entire* log,
+31 error including the npm and node versions, at:
+31 error     <http://github.com/npm/npm/issues>
+32 error System Darwin 15.0.0
+33 error command "/usr/local/bin/node" "/usr/local/bin/npm" "install" "-add" "tessel"
+34 error cwd /Users/natepotter/Documents/Clients/Browncoat Apps/Internet
+35 error node -v v0.10.40
+36 error npm -v 1.4.28
+37 verbose exit [ 1, true ]

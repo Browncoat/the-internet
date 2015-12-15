@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>The Internet</title>
+    </head>
+
+    <body >
+        <h1>The Internet</h1>
+        <button class="led" id="led-0">Toggle LED0</button>
+        <button class="led" id="led-1">Toggle LED1</button>
+        <button class="led" id="led-2">Toggle LED2</button>
+        <button class="led" id="led-3">Toggle LED3</button>
+
+        <script src="https://code.jquery.com/jquery-2.1.1.min.js"> </script>
+
+        <script>
+
+            $('.led').click(toggleLED);
+
+            function toggleLED() {
+
+                var index = this.id.split('-')[1];
+
+                $.ajax({
+                    type: "GET",
+                    url: '/leds/' + index,
+                    success: function() { console.log('led' + index + ' toggled'); },
+                });
+            }
+        </script>
+
+        <script>
+
+            var exampleSocket = new WebSocket("ws://10.0.0.11:8081");
+
+            var state = true;
+
+            setInterval(function() {
+
+                var packet = {led : 0, on : state}
+
+                exampleSocket.send(JSON.stringify(packet));
+
+                state = !state
+            }, 5000);
+        </script>
+    </body>
+</html>
