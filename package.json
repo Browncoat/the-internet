@@ -9,7 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "tessel": "0.3.23",
+    "tessel": "0.3.22",
     "wifi-cc3000": "0.0.1"
   }
 }

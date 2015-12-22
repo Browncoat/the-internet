@@ -1,11 +1,12 @@
 var wifi = require('wifi-cc3000'),
     http = require( 'http' ),
-    fs = require('fs'),
     tessel = require('tessel'),
     portA = tessel.port['A'],
     outputPin = portA.pin['G1'],
-    network = process.argv[1],
-    pass = process.argv[2],
+    portB = tessel.port['B'],
+    outputPin2 = portB.pin['G1'],
+    network = process.argsv[1],
+    pass = process.argsv[2],
     security = 'wpa2',
     timeouts = 0,
     quotes = require('./static/it_crowd_quotes.json');
@@ -40,9 +41,18 @@ var responseBlink = function() {
     }, 200);
 }
 
+var responseVibrate = function() {
+    outputPin2.output(1);
+    var timer = setInterval(function() {
+        outputPin2.output(0);
+        clearInterval(timer);
+    }, 500);
+}
+
 setTimeout( function() {
     http.createServer( function (req, res) {
         responseBlink();
+        responseVibrate();
         var quote = quotes[Math.floor(Math.random() * (quotes.length + 1)) + 0];
         res.writeHead( 200, {'Content-Type': 'text/plain'} );
         res.end(quote);
@@ -52,6 +62,7 @@ setTimeout( function() {
 setTimeout( function() {
     http.createServer( function (req, res) {
         responseBlink();
+        responseVibrate();
         res.writeHead(200, {"Content-Type": "text/html"});
         res.write(html);
         res.end();
@@ -59,6 +70,7 @@ setTimeout( function() {
 }, 10000 );
 
 function connect() {
+    console.log('connecting');
     wifi.connect({
         security: security,
         ssid: network,
